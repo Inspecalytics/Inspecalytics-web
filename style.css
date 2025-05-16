@@ -280,7 +280,9 @@ header nav ul li a.active {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding: 4rem 2rem;
+    justify-content: center; /* Center the content and image */
+    gap: 3rem; /* Add gap between content and image */
+    padding: 4rem; /* Adjusted padding */
     position: relative;
     overflow: hidden;
     background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
@@ -288,7 +290,7 @@ header nav ul li a.active {
 
 .hero-content {
     flex: 1;
-    max-width: 600px;
+    max-width: 650px; /* Increased max-width */
     z-index: 2;
 }
 
@@ -339,7 +341,7 @@ header nav ul li a.active {
 .hero-image {
     flex: 1;
     position: relative;
-    max-width: 600px;
+    max-width: 700px; /* Increased max-width */
 }
 
 .main-image {
