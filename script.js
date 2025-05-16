@@ -1,39 +1,24 @@
 // Inspecalytics - script.js
 
-// Intersection Observer for scroll animations
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-// Observe elements for scroll animations
-document.addEventListener('DOMContentLoaded', () => {
-    // Observe sections
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
+// Initialize AOS (Animate On Scroll)
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize AOS with improved settings
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: false, // Allow animations to repeat
+        mirror: true, // Mirror animations on scroll up
+        offset: 50, // Start animation earlier
+        delay: 0, // No delay between animations
+        anchorPlacement: 'top-bottom' // Trigger animation when top of element reaches bottom of window
     });
 
-    // Observe feature items
-    document.querySelectorAll('.feature-item').forEach(item => {
-        observer.observe(item);
+    // Refresh AOS on window resize
+    window.addEventListener('resize', function() {
+        AOS.refresh();
     });
 
-    // Observe testimonials
-    document.querySelectorAll('.testimonial').forEach(testimonial => {
-        observer.observe(testimonial);
-    });
-
-    // Smooth scroll for navigation links
+    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -47,28 +32,60 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form validation and animation
-    const demoForm = document.getElementById('demoRequestForm');
-    if (demoForm) {
-        demoForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Add your form submission logic here
-            const submitButton = demoForm.querySelector('button[type="submit"]');
-            submitButton.classList.add('animate-scale-in');
-            setTimeout(() => {
-                submitButton.classList.remove('animate-scale-in');
-            }, 600);
+    // Parallax effect for hero section
+    const heroSection = document.querySelector('.hero-section');
+    if (heroSection) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            heroSection.style.backgroundPositionY = scrolled * 0.5 + 'px';
         });
     }
 
-    // Add parallax effect to hero section
-    const hero = document.querySelector('#hero');
-    if (hero) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+    // Animate numbers in stats
+    const animateValue = (element, start, end, duration) => {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            const value = Math.floor(progress * (end - start) + start);
+            element.textContent = value + (element.textContent.includes('+') ? '+' : '');
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    };
+
+    // Intersection Observer for stats animation
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const statNumbers = entry.target.querySelectorAll('.stat-number');
+                statNumbers.forEach(stat => {
+                    const value = parseInt(stat.textContent);
+                    animateValue(stat, 0, value, 2000);
+                });
+                statsObserver.unobserve(entry.target);
+            }
         });
+    }, { threshold: 0.5 });
+
+    // Observe stats section
+    const statsSection = document.querySelector('.hero-stats');
+    if (statsSection) {
+        statsObserver.observe(statsSection);
     }
+
+    // Add hover effect to feature items
+    document.querySelectorAll('.feature-item').forEach(item => {
+        item.addEventListener('mouseenter', () => {
+            item.style.transform = 'translateY(-10px)';
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            item.style.transform = 'translateY(0)';
+        });
+    });
 
     // Add hover effect to feature icons
     document.querySelectorAll('.feature-item img').forEach(icon => {
@@ -80,14 +97,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Handle Newsletter Form Submission (Placeholder)
+    // Add loading animation to buttons
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            if (!this.classList.contains('btn-secondary')) {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+                
+                // Reset button text after animation
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 1000);
+            }
+        });
+    });
+
+    // Form validation and submission
+    const demoForm = document.getElementById('demoRequestForm');
+    if (demoForm) {
+        demoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Basic form validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            if (!name || !email) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Here you would typically send the form data to your server
+            // For now, we'll just show a success message
+            alert('Thank you for your interest! We will contact you soon.');
+            demoForm.reset();
+        });
+    }
+
+    // Handle Newsletter Form Submission
     const newsletterForm = document.getElementById('newsletterForm');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent actual submission for now
+            event.preventDefault();
             const emailInput = newsletterForm.querySelector('input[type="email"]');
             alert(`Newsletter subscription for ${emailInput.value} submitted (placeholder).`);
-            // Similar to demo form, send data to a server here.
             newsletterForm.reset();
         });
     }
@@ -97,5 +150,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // - Active navigation link highlighting based on scroll or page
     // - Mobile navigation toggle
     // - Live chat integration logic (if any client-side setup is needed)
-
 }); 

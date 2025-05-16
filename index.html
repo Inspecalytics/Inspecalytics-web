@@ -8,6 +8,15 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
     <meta name="description" content="Inspecalytics is an advanced inspection and analytics platform for professional project management and data analysis.">
     <meta name="keywords" content="inspection, analytics, project management, data analysis, mobile inspection">
+    <!-- Modern CSS Libraries -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Add more SEO meta tags as needed -->
     <!-- Add accessibility attributes as needed -->
 </head>
@@ -33,45 +42,99 @@
     </header>
 
     <main>
-        <section id="hero">
-            <div class="hero-content">
-                <h1>Advanced Inspection & Analytics Platform</h1>
-                <p>Streamline your inspection processes with powerful project management, image-based analysis, and customizable data organization. Professional, reliable, and sophisticated.</p>
-                <a href="features.html" class="btn btn-primary">Learn More</a>
-                <a href="#download-app" class="btn btn-secondary">Download App</a>
+        <section id="hero" class="hero-section">
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="animate__animated animate__fadeInUp">Advanced Inspection & Analytics Platform</h1>
+                <p class="animate__animated animate__fadeInUp animate__delay-1s">Streamline your inspection processes with powerful project management, image-based analysis, and customizable data organization. Professional, reliable, and sophisticated.</p>
+                <div class="hero-buttons animate__animated animate__fadeInUp animate__delay-2s">
+                    <a href="features.html" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i> Learn More
+                    </a>
+                    <a href="#download-app" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Download App
+                    </a>
+                </div>
+                <div class="hero-stats animate__animated animate__fadeInUp animate__delay-3s">
+                    <div class="stat-item">
+                        <span class="stat-number">10k+</span>
+                        <span class="stat-label">Active Users</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50k+</span>
+                        <span class="stat-label">Inspections</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">Uptime</span>
+                    </div>
+                </div>
             </div>
-            <div class="hero-image">
-                <!-- Professional hero image -->
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Inspecalytics Platform Showcase">
+            <div class="hero-image" data-aos="fade-left" data-aos-duration="1000">
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Inspecalytics Platform Showcase" class="main-image">
+                <div class="feature-highlight" data-aos="zoom-in" data-aos-delay="500">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Real-time Analytics</span>
+                </div>
+                <div class="feature-highlight" data-aos="zoom-in" data-aos-delay="700">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Advanced Reporting</span>
+                </div>
             </div>
         </section>
 
-        <section id="features-overview">
-            <h2>Key Features</h2>
+        <section id="features-overview" class="features-section">
+            <h2 data-aos="fade-up">Key Features</h2>
             <div class="feature-grid">
-                <div class="feature-item">
-                    <img src="assets/icon-project-management.svg" alt="Project Management Icon">
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
                     <h3>Project Management System</h3>
                     <p>Hierarchical folders, detailed metadata, and support for various project types.</p>
+                    <a href="features.html#project-management" class="feature-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="feature-item">
-                    <img src="assets/icon-inspection-tools.svg" alt="Inspection Tools Icon">
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
                     <h3>Advanced Inspection Tools</h3>
                     <p>Image-based inspections, hotspot marking, custom part numbering, and annotations.</p>
+                    <a href="features.html#inspection-tools" class="feature-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="feature-item">
-                    <img src="assets/icon-type-classification.svg" alt="Type Classification Icon">
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
                     <h3>Type & Subtype Classification</h3>
                     <p>Customizable types, subtype categorization, numeric values, and hierarchical relationships.</p>
+                    <a href="features.html#classification" class="feature-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
-                <div class="feature-item">
-                    <img src="assets/icon-data-management.svg" alt="Data Management Icon">
+                <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
                     <h3>Secure Data Management</h3>
                     <p>Robust authentication, data export, project filtering, and multi-level organization.</p>
+                    <a href="features.html#security" class="feature-link">
+                        Learn more <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
-            <div class="text-center">
-                <a href="features.html" class="btn btn-secondary">Explore All Features</a>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="500">
+                <a href="features.html" class="btn btn-primary">
+                    <i class="fas fa-th-list"></i> Explore All Features
+                </a>
             </div>
         </section>
 
@@ -291,6 +354,7 @@
 
     <!-- Placeholder for Live Chat Snippet -->
     <!-- <script src="livechat.js"></script> -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 
