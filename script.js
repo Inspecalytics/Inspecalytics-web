@@ -1,37 +1,84 @@
 // Inspecalytics - script.js
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("Inspecalytics website scripts loaded.");
+// Intersection Observer for scroll animations
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+};
 
-    // Smooth scrolling for anchor links (optional)
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in');
+            observer.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Observe elements for scroll animations
+document.addEventListener('DOMContentLoaded', () => {
+    // Observe sections
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+
+    // Observe feature items
+    document.querySelectorAll('.feature-item').forEach(item => {
+        observer.observe(item);
+    });
+
+    // Observe testimonials
+    document.querySelectorAll('.testimonial').forEach(testimonial => {
+        observer.observe(testimonial);
+    });
+
+    // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            const hrefAttribute = this.getAttribute('href');
-            if (hrefAttribute.length > 1 && document.querySelector(hrefAttribute)) {
-                 e.preventDefault();
-                document.querySelector(hrefAttribute).scrollIntoView({
-                    behavior: 'smooth'
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
     });
 
-    // Handle Demo Request Form Submission (Placeholder)
+    // Form validation and animation
     const demoForm = document.getElementById('demoRequestForm');
     if (demoForm) {
-        demoForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent actual submission for now
-            alert("Demo request form submitted (placeholder). You would typically send this data to a server.");
-            // In a real application, you would collect form data and send it via AJAX/Fetch
-            // For example:
-            // const formData = new FormData(demoForm);
-            // fetch('/api/request-demo', { method: 'POST', body: formData })
-            // .then(response => response.json())
-            // .then(data => console.log(data))
-            // .catch(error => console.error('Error:', error));
-            demoForm.reset();
+        demoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add your form submission logic here
+            const submitButton = demoForm.querySelector('button[type="submit"]');
+            submitButton.classList.add('animate-scale-in');
+            setTimeout(() => {
+                submitButton.classList.remove('animate-scale-in');
+            }, 600);
         });
     }
+
+    // Add parallax effect to hero section
+    const hero = document.querySelector('#hero');
+    if (hero) {
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+        });
+    }
+
+    // Add hover effect to feature icons
+    document.querySelectorAll('.feature-item img').forEach(icon => {
+        icon.addEventListener('mouseover', () => {
+            icon.style.transform = 'scale(1.1) rotate(5deg)';
+        });
+        icon.addEventListener('mouseout', () => {
+            icon.style.transform = 'scale(1) rotate(0deg)';
+        });
+    });
 
     // Handle Newsletter Form Submission (Placeholder)
     const newsletterForm = document.getElementById('newsletterForm');
