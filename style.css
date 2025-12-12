@@ -1249,13 +1249,13 @@ header nav ul li a.active {
         max-width: 550px;
     }
 
-    .ms-form-container {
-        padding: 1rem;
-        margin: 0 1rem;
+    .waitlist-form-container {
+        padding: 1.5rem;
+        margin: 0 0.5rem;
     }
     
-    .ms-form-container iframe {
-        height: 550px;
+    .waitlist-form-container iframe {
+        height: 480px;
     }
 
     header nav {
@@ -1455,21 +1455,37 @@ section h2::after {
     color: rgba(255, 255, 255, 0.85);
 }
 
-/* Microsoft Forms Embed Container */
-.ms-form-container {
-    max-width: 650px;
+/* Waitlist Form Container - Microsoft Forms Embed */
+.waitlist-form-container {
+    max-width: 580px;
     margin: 0 auto;
     background: var(--white);
-    padding: 1.5rem;
+    padding: 2.5rem;
     border-radius: var(--border-radius-lg);
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
     position: relative;
     z-index: 1;
 }
 
-.ms-form-container iframe {
+.waitlist-form-container::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color), #60a5fa);
+    border-radius: calc(var(--border-radius-lg) + 3px);
+    z-index: -1;
+    opacity: 0.8;
+}
+
+.waitlist-form-container iframe {
     display: block;
-    border-radius: 8px;
+    width: 100%;
+    height: 520px;
+    border: none;
+    border-radius: var(--border-radius);
 }
 
 .contact-note {
