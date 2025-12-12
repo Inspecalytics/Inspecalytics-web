@@ -97,10 +97,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Add loading animation to buttons
+    // Add loading animation to buttons (except form submit buttons)
     document.querySelectorAll('.btn').forEach(button => {
         button.addEventListener('click', function(e) {
-            if (!this.classList.contains('btn-secondary')) {
+            // Skip if it's a form submit button or secondary button
+            if (!this.classList.contains('btn-secondary') && this.type !== 'submit') {
                 const originalText = this.innerHTML;
                 this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
                 
@@ -112,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Waitlist form is now handled by embedded Microsoft Forms
+    // Waitlist form is handled by embedded Microsoft Forms
     // Responses automatically save to Excel in OneDrive
 
     // Handle Newsletter Form Submission
