@@ -1249,8 +1249,13 @@ header nav ul li a.active {
         max-width: 550px;
     }
 
-    #waitlistForm {
-        padding: 2rem 1.5rem;
+    .ms-form-container {
+        padding: 1rem;
+        margin: 0 1rem;
+    }
+    
+    .ms-form-container iframe {
+        height: 550px;
     }
 
     header nav {
@@ -1450,74 +1455,21 @@ section h2::after {
     color: rgba(255, 255, 255, 0.85);
 }
 
-#waitlistForm {
-    max-width: 520px;
+/* Microsoft Forms Embed Container */
+.ms-form-container {
+    max-width: 650px;
     margin: 0 auto;
     background: var(--white);
-    padding: 3rem;
+    padding: 1.5rem;
     border-radius: var(--border-radius-lg);
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
     position: relative;
     z-index: 1;
 }
 
-#waitlistForm div {
-    margin-bottom: 1.5rem;
-    text-align: left;
-}
-
-#waitlistForm label {
+.ms-form-container iframe {
     display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: var(--text-color);
-    font-size: 0.9rem;
-}
-
-#waitlistForm input[type="text"],
-#waitlistForm input[type="email"],
-#waitlistForm select,
-#waitlistForm textarea {
-    width: 100%;
-    padding: 14px 16px;
-    border: 2px solid #e5e7eb;
-    border-radius: var(--border-radius);
-    font-size: 1em;
-    font-family: 'Inter', sans-serif;
-    transition: var(--transition);
-    background: #f9fafb;
-}
-
-#waitlistForm input:focus,
-#waitlistForm select:focus,
-#waitlistForm textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
-    background: var(--white);
-}
-
-#waitlistForm select {
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    background-size: 20px;
-    padding-right: 44px;
-}
-
-#waitlistForm textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-#waitlistForm button {
-    width: 100%;
-    padding: 16px;
-    font-size: 1.1em;
-    margin-top: 0.5rem;
-    border-radius: var(--border-radius);
+    border-radius: 8px;
 }
 
 .contact-note {

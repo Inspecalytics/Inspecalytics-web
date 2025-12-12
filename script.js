@@ -112,27 +112,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Form validation and submission
-    const waitlistForm = document.getElementById('waitlistForm');
-    if (waitlistForm) {
-        waitlistForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Basic form validation
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            
-            if (!name || !email) {
-                alert('Please fill in all required fields');
-                return;
-            }
-            
-            // Here you would typically send the form data to your server
-            // For now, we'll just show a success message
-            alert('Thank you for joining our waitlist! We will contact you soon with early access details.');
-            waitlistForm.reset();
-        });
-    }
+    // Waitlist form is now handled by embedded Microsoft Forms
+    // Responses automatically save to Excel in OneDrive
 
     // Handle Newsletter Form Submission
     const newsletterForm = document.getElementById('newsletterForm');
