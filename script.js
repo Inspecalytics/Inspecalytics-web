@@ -113,9 +113,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Form validation and submission
-    const demoForm = document.getElementById('demoRequestForm');
-    if (demoForm) {
-        demoForm.addEventListener('submit', (e) => {
+    const waitlistForm = document.getElementById('waitlistForm');
+    if (waitlistForm) {
+        waitlistForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
             // Basic form validation
@@ -129,8 +129,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Here you would typically send the form data to your server
             // For now, we'll just show a success message
-            alert('Thank you for your interest! We will contact you soon.');
-            demoForm.reset();
+            alert('Thank you for joining our waitlist! We will contact you soon with early access details.');
+            waitlistForm.reset();
         });
     }
 
