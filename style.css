@@ -449,6 +449,7 @@ header nav ul li a.active {
 
 .hero-buttons {
     display: flex;
+    justify-content: center;
     gap: 1rem;
     margin-bottom: 0;
 }
